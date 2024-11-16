@@ -24,6 +24,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
             animation: float 2s ease-in-out infinite;
+            margin-left:10px;
         }
         @keyframes float {
             0% { transform: translateY(0px); }
@@ -122,17 +123,30 @@
             font-size: 1.5rem;
             cursor: pointer;
         }
+        h1{
+          color:white;
+        }
+        .titulo{
+          margin-top:-100%;
+          margin-left:10px;
+          position: fixed;
+        }
     </style>
 </head>
 <body>
-    <div class="message-icon" onclick="openModal()">✉️</div>
+  <div class="titulo">
+     <h1>Abre tu Regalo</h1>
+  </div>
+ 
+ 
+    <div class="message-icon" onclick="openModal()">🎁</div>
     <div class="modal" id="messageModal">
         <div class="hearts" id="hearts"></div>
         <span class="close" onclick="closeModal()">&times;</span>
         <div class="modal-content">
-            <img class="photo" src="papá.jpg" alt="Papá">
-            <div class="message">¡Feliz Cumpleaños Papá Te Amo 💕
-            ! 🎉🎂<br>¡Que tengas un día especial!</div>
+            <img class="photo" src="papá.jpg" width="200px">
+            <img class="photo" src="20221118_233015.jpg" width="200px">
+            <div class="message">¡Feliz Cumpleaños Papá Te Amo 💕! 🎉🎂<br>¡Que tengas un día especial!</div>
         </div>
     </div>
     <div class="music-controls" id="musicControls">
