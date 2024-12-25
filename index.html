@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Navidad</title>
+    <style>
+        /* Fondo de la página */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: linear-gradient(to bottom, #00203F, #00456E);
+            overflow: hidden;
+            color: #fff;
+        }
+
+        /* Contenedor principal */
+        .container {
+            position: relative;
+            margin-top: 20vh;
+        }
+
+        /* Botón navideño */
+        button {
+            margin-top: 20px;
+            padding: 15px 30px;
+            font-size: 20px;
+            color: #fff;
+            background-color: #d93025;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.8), 0 0 30px rgba(255, 100, 100, 0.5);
+        }
+
+        button:hover {
+            background-color: #b71c1c;
+            box-shadow: 0 0 30px rgba(255, 200, 200, 1), 0 0 40px rgba(255, 100, 100, 0.8);
+            transform: scale(1.1);
+        }
+
+        /* Carta de Navidad */
+        .card {
+            display: none;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .card h1 {
+            font-size: 28px;
+            color: #d93025;
+        }
+
+        .card p {
+            font-size: 18px;
+            color: #333;
+        }
+
+        /* Animación de desvanecimiento */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Fuegos artificiales */
+        .firework {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: transparent;
+            box-shadow: 0 0 10px #fff, 0 0 20px #ff0, 0 0 30px #f00;
+            border-radius: 50%;
+            animation: explode 1.5s ease-in-out infinite;
+        }
+
+        @keyframes explode {
+            0% {
+                transform: scale(0.5);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(2);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(3);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button onclick="showCard()">🎄 Ver Carta de Navidad 🎄</button>
+        <div class="card" id="christmasCard">
+            <h1>¡Feliz Navidad!</h1>
+            <img src="/storage/emulated/0/Download/Familia.jpg" alt="Familia Manubens">
+            <p>La familia Manubens les desea una Feliz Navidad llena de amor, paz y felicidad. ¡Que todos sus sueños se hagan realidad!</p>
+        </div>
+    </div>
+
+    <!-- Contenedor para fuegos artificiales -->
+    <div id="fireworks"></div>
+
+    <script>
+        let fireworksInterval; // Variable para manejar los fuegos artificiales
+
+        // Mostrar carta y activar fuegos artificiales
+        function showCard() {
+            const card = document.getElementById('christmasCard');
+            card.style.display = 'block';
+            card.style.animation = 'fadeIn 1s ease-in-out';
+
+            // Iniciar fuegos artificiales
+            startFireworks();
+
+            // Detener fuegos artificiales después de 5 segundos
+            setTimeout(stopFireworks, 5000);
+        }
+
+        // Crear fuegos artificiales
+        function createFirework(x, y) {
+            const firework = document.createElement('div');
+            firework.classList.add('firework');
+            firework.style.left = `${x}px`;
+            firework.style.top = `${y}px`;
+            document.body.appendChild(firework);
+
+            setTimeout(() => {
+                firework.remove();
+            }, 1500);
+        }
+
+        // Generar fuegos artificiales al azar
+        function startFireworks() {
+            fireworksInterval = setInterval(() => {
+                const x = Math.random() * window.innerWidth;
+                const y = Math.random() * window.innerHeight / 2;
+                createFirework(x, y);
+            }, 300); // Explosiones rápidas
+        }
+
+        // Detener fuegos artificiales
+        function stopFireworks() {
+            clearInterval(fireworksInterval);
+        }
+    </script>
+</body>
+</html>
